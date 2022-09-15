@@ -1,0 +1,161 @@
+*{
+    margin: 0;
+    padding: 0;               /* resetar as definções do browser*/
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;    /* retirar a estilização da lista*/
+}
+
+body{
+    background-image: url(./Materiais/background.jpg);
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-color: #121214;
+}
+
+body * {
+    font-family: 'Inter', sans-serif;
+    line-height: 160%;
+}
+
+header {
+    padding-top: 32px;
+    height: calc(120px + 32px); /* adicionamos esse "height" para definir o tamanho do espaço que quremos deixar carregado para a nossa box "header" antes do efeito de animação, e usamos um "calc" para somar o tamanho que queriamos deixar carregado(120px) + o tamanho da borda ou respiração da página(32px)*/
+    
+}
+
+header div {
+    width: 120px;
+    margin: auto;
+    background-image: linear-gradient(90deg, #9572FC 0%, #43E7AD 50.52%, #E2D45C 100%);     /* propriedades e definições da box debaixo(borda gradient)*/
+
+    border-radius: 50%;
+    display: flex; /* usamos para centralizar a box debaixo pela box de cima*/
+    padding: 4px;
+
+    transition: transform .3s;       /* para uma transição mais suave, colocamos 0.3s entre in e out*/
+}
+
+header div img {
+    width: 100%;
+    border-radius: 50%;
+
+}
+
+header div:hover {     /*Aqui adicionamos o efeito de transição ao passarmos o mouse acima da box.*/
+    transform: scale(1.1)
+}
+
+main {
+    max-width: 580px;  /*definindo o tamanho máximo das box(todas dentro da main) */
+    width: 90%;     /*colocando a largura proporcional ao tamanho da pagina em 90% da largura máxima*/       
+    margin: 32px auto;
+
+    display: grid;
+    gap: 24px;   
+}
+
+section{
+    color: white;
+    background-image: linear-gradient(90deg, #9572FC 0%, #43E7AD 50.52%, #E2D45C 100%);     /* propriedades e definições da box debaixo(borda gradient)*/
+    padding-top: 4px;
+    border-radius: 10px;
+}
+
+section div {
+    background-color: #2A2634;
+    padding: 32px;
+    padding-top: 24px; /* propriedades e definiões da box de cima*/
+    border-radius: 8px;
+}
+
+section h2 { 
+    letter-spacing: -0.47px;
+}
+
+section p {
+    letter-spacing: -0.18px;
+    color: #A1A1AA;
+}
+
+section ul {
+    display: flex; /*trocamos aqui a orientação dos objetos "li" de block para in-line, assim deixando uns ao lado dos outros.*/
+    flex-wrap: wrap; /*usamos a funcionalidade "wrap" para dimensionar em linhas os objetos da "li" de acordo com a expansividade.*/
+    gap: 16px;
+
+    margin-top: 24px;
+    
+}
+
+section ul li {
+    transition: transform .3s;
+}
+
+section ul li:hover {
+    transform: scale(1.1);
+}
+
+.game-list img {
+    width: 90px;
+    border-radius: 8px;
+}
+
+.Streamers-list img {
+    width: 70px;
+    border-radius: 50%;
+    border: 1px solid #443E54;
+}
+
+
+/* Animation */
+
+header div {
+    animation: fromtop .7s .2s backwards; /* ordem de propriedades: nome/tempo de reprodução/delay/Backwards: faz com o que junto do delay possamos puxar todas as propriedades para virem junto e ficar algo bacana*/
+    
+}
+
+main section {
+    animation: frombotton .7s backwards;
+}
+
+main section:nth-child(1) { /*aqui usamos o "nth-child()" para dizermos de qual das 3 section estamos querendo alterar*/
+    animation-delay: 0;
+
+}
+
+main section:nth-child(2) {
+    animation-delay: .3s;
+}
+
+main section:nth-child(3) {
+    animation-delay: .6s;
+}
+
+@keyframes fromtop {
+   from {
+    opacity: 0;
+    transform: translateY(-30px)
+    }
+
+   to {
+    opacity: 1;
+    transform: translateY(0)
+    }
+}
+
+
+@keyframes frombotton {
+    from {
+        opacity: 0;
+        transform: translateY(30px); /* repare que aqui temos "30px" e não "-30px", pois agora queremos que a animação comece de baixo para cima. */
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
